@@ -10,7 +10,6 @@ public class DBConnection {
 	private	static final String PASS = "7377";
 	private	static DBConnection db = null;
 	private	static Connection conn = null;
-	private	static Statement stmt = null;
 	
 	
 	private DBConnection() {
@@ -32,7 +31,6 @@ public class DBConnection {
 			e.printStackTrace();
 		}
 		conn = DriverManager.getConnection(DB_URL, USER, PASS);
-		stmt = conn.createStatement();
 
 		return conn;
 	}
