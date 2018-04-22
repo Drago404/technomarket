@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+    pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -33,7 +33,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<div id='cssmenu'>
+<div id='cssmenu'>
 <ul>
    <li><a href='#'><span>Home</span></a></li>
    <li class='active has-sub'><a href='#'><span>Телевизори</span></a>

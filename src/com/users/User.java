@@ -30,6 +30,14 @@ public class User {
 		this.dateOfBirth = dateOfBirth;
 		this.orders = new ArrayList<Order>();
 	}
+	public User(String firstName, String lastName, String email, String password) throws UserException {
+		this.id = id;
+		setFirstName(firstName);
+		setLastName(lastName);
+		setEmail(email);
+		setPassword(password);
+		this.orders = new ArrayList<Order>();
+	}
 	
 
 	public int getId() {

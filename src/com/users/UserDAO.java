@@ -6,8 +6,10 @@ import com.exceptions.UserException;
 
 public interface UserDAO {
 	
-	 void register(User user) throws UserException, SQLException;
+	 boolean register(User user) throws UserException, SQLException;
 
 	boolean checkIfUserExists(User user) throws UserException, SQLException;
+	
+	boolean login(String email, String password) throws SQLException;
 
 }

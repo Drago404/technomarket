@@ -1,7 +1,9 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-	<title>Login</title>
+	<title>Register</title>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 <!--===============================================================================================-->	
@@ -30,45 +32,46 @@
 	<div class="limiter">
 		<div class="container-login100">
 			<div class="wrap-login100">
-				<form class="login100-form validate-form p-l-55 p-r-55 p-t-178" action="./login" method="post">
+				<form class="login100-form validate-form p-l-55 p-r-55 p-t-178" action="./register" method="post">
 					<span class="login100-form-title">
-						Sign In
+						Sign up
 					</span>
 
-					<div class="wrap-input100 validate-input m-b-16" data-validate="Please enter username">
+					<div class="wrap-input100 validate-input m-b-16" data-validate="Please enter first name">
+						<input class="input100" type="text" name="firstName" placeholder="First Name">
+						<span class="focus-input100"></span>
+					</div>
+
+					<div class="wrap-input100 validate-input" data-validate = "Please enter last name">
+						<input class="input100" type="text" name="lastName" placeholder="Last Name">
+						<span class="focus-input100"></span>
+					</div>
+					
+					<div class="wrap-input100 validate-input" data-validate = "Please enter email">
 						<input class="input100" type="text" name="email" placeholder="Email">
 						<span class="focus-input100"></span>
 					</div>
 
-					<div class="wrap-input100 validate-input" data-validate = "Please enter password">
-						<input class="input100" type="password" name="pass" placeholder="Password">
+				<div class="wrap-input100 validate-input" data-validate = "Please enter password">
+						<input class="input100" type="text" name="password" placeholder="Password">
 						<span class="focus-input100"></span>
 					</div>
 
-					<div class="text-right p-t-13 p-b-23">
-						<span class="txt1">
-							Forgot
-						</span>
-
-						<a href="#" class="txt2">
-							Username / Password?
-						</a>
+					
+				<div class="wrap-input100 validate-input" data-validate = "Please enter password again">
+						<input class="input100" type="text" name="password" placeholder="Password again">
+						<span class="focus-input100"></span>
 					</div>
-
-					<div class="container-login100-form-btn">
-						<button class="login100-form-btn">
-							Sign in
-						</button>
-					</div>
-
-					<div class="flex-col-c p-t-170 p-b-40">
-						<span class="txt1 p-b-9">
-							Don’t have an account?
-						</span>
-
-						<a href="#" class="txt3">
-							Sign up now
-						</a>
+					
+				<div class="wrap-input100 validate-input" data-validate = "Please enter date of birth">
+						<input class="input100" type="text" name="dateOfBirth" placeholder="Date of birth(YYYY-MM-DD)">
+						<span class="focus-input100"></span>
+					</div>	
+						
+				<div class="container-login100-form-btn">
+				<button class="login100-form-btn">
+					Register
+				</button>
 					</div>
 				</form>
 			</div>
