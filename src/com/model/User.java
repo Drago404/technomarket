@@ -1,4 +1,4 @@
-package com.users;
+package com.model;
 
 import java.sql.Date;
 import java.time.LocalDate;
@@ -9,38 +9,41 @@ import com.exceptions.UserException;
 
 public class User {
 	
-	private int id;
+	private long id;
 	private String firstName;
 	private String lastName;
 	private String email;
 	private String password;
 	private boolean isMale;
-	private Date dateOfBirth;
-	private List orders;
+	private LocalDate dateOfBirth;
+	private boolean isAdmin;
+	private List<Order> orders;
+	private List<Item> favItems;
 	
 	
-	public User(int id, String firstName, String lastName, String email, String password, boolean isMale,
-			Date dateOfBirth) throws UserException {
+	public User(String firstName, String lastName, String email, String password,
+			LocalDate dateOfBirth, boolean isAdmin) throws UserException {
 		this.id = id;
 		setFirstName(firstName);
 		setLastName(lastName);
 		setEmail(email);
 		setPassword(password);
-		this.isMale = isMale;
-		this.dateOfBirth = dateOfBirth;
+		setDateOfBirth(dateOfBirth);
+		this.isAdmin = isAdmin;
 		this.orders = new ArrayList<Order>();
 	}
-	public User(String firstName, String lastName, String email, String password) throws UserException {
+	public User(String firstName, String lastName, String email, String password, LocalDate dateOfBirth) throws UserException {
 		this.id = id;
 		setFirstName(firstName);
 		setLastName(lastName);
 		setEmail(email);
 		setPassword(password);
+		setDateOfBirth(dateOfBirth);
 		this.orders = new ArrayList<Order>();
 	}
 	
 
-	public int getId() {
+	public long getId() {
 		return id;
 	}
 
@@ -98,12 +101,21 @@ public class User {
 		this.isMale = isMale;
 	}
 
-	public Date getDateOfBirth() {
+	public LocalDate getDateOfBirth() {
 		return dateOfBirth;
 	}
 
-	public void setDateOfBirth(Date dateOfBirth) {
+	public void setDateOfBirth(LocalDate dateOfBirth) {
 		this.dateOfBirth = dateOfBirth;
+	}
+	public boolean isAdmin() {
+		return isAdmin;
+	}
+	public void setAdmin(boolean isAdmin) {
+		this.isAdmin = isAdmin;
+	}
+	public void setId(long id) {
+		this.id = id;
 	}
 	
 	

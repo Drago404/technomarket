@@ -1,4 +1,4 @@
-package com.users;
+package com.model;
 
 import java.util.Collection;
 import java.util.Collections;

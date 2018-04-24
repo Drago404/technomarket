@@ -1,4 +1,4 @@
-package com.users;
+package com.model;
 
 public class Address {
 	

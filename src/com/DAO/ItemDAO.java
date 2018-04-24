@@ -1,25 +1,33 @@
-package com.users;
+package com.DAO;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import com.db.DBConnection;
+import com.model.Category;
+import com.model.Item;
 
 public class ItemDAO {
 
 	private static final String SHOW_ALL_ITEMS_BY_CATEGORY = "SELECT * FROM items WHERE category_id = ?";
+	private static final String ADD_PRODUCT = "insert into items(name,price,description,quantity,pictureUrl,category_id)"
+			+ "values(?, ?, ?, ?, ?, ?) ";
 	private Connection conn;
+	public static  Map<Long, Item> allItems;
 
 	public ItemDAO() throws SQLException {
 		this.conn = DBConnection.getInstance().getConnection();
+		allItems = new HashMap<Long, Item>();
 	}
 
 	public List<Item> itemsByCategory(Category category) throws SQLException {
-		int categoryID = category.getId();
+		long categoryID = category.getId();
 		PreparedStatement stmt = conn.prepareStatement(SHOW_ALL_ITEMS_BY_CATEGORY);
 		stmt.setInt(1, category.getId());
 		ResultSet rs = stmt.executeQuery();
@@ -39,6 +47,31 @@ public class ItemDAO {
 		
 		return itemsList;
 
+	}
+	
+	
+	public void addItem(Item i) {
+		try {
+			int categoryId = CategoryDAO.getInstance().getAllCategories().get(i.getCategoryId());
+			PreparedStatement stmt = conn.prepareStatement(ADD_PRODUCT);
+			stmt.setString(1, i.getName());
+			stmt.setFloat(2, i.getPrice());
+			stmt.setString(3, i.getDescription());
+			stmt.setInt(4, i.getQuantity());
+			stmt.setString(5, i.getPictureUrl());
+			stmt.setLong(6, categoryId);
+			
+			synchronized(this){
+				stmt.execute();
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+		
+		
+		
 	}
 
 }

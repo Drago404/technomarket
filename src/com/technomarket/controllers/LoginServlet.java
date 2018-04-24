@@ -1,4 +1,4 @@
-package com.technomarket.servlets;
+package com.technomarket.controllers;
 
 import java.io.IOException;
 import java.sql.SQLException;
@@ -9,7 +9,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.users.UserDAOImpl;
+import com.DAO.UserDAOImpl;
 
 /**
  * Servlet implementation class LoginServlet

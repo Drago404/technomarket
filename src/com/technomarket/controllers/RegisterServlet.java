@@ -1,7 +1,9 @@
-package com.technomarket.servlets;
+package com.technomarket.controllers;
 
 import java.io.IOException;
 import java.sql.SQLException;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.Date;
 
 import javax.servlet.ServletException;
@@ -10,9 +12,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.DAO.UserDAOImpl;
 import com.exceptions.UserException;
-import com.users.User;
-import com.users.UserDAOImpl;
+import com.model.User;
 
 /**
  * Servlet implementation class RegisterServlet
@@ -25,9 +27,13 @@ public class RegisterServlet extends HttpServlet {
 		String lastName = request.getParameter("lastName");
 		String email = request.getParameter("email");
 		String pass = request.getParameter("password");
+		String birthDate = request.getParameter("dateOfBirth");
+		
+		DateTimeFormatter formatter = DateTimeFormatter.ISO_DATE;
+        LocalDate date = LocalDate.parse(birthDate, formatter);
 		User user = null;
 		try {
-			user = new User(firstName, lastName, email, pass);
+			user = new User(firstName, lastName, email, pass, date);
 		} catch (UserException e) {
 			e.printStackTrace();
 		}

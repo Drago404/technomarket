@@ -53,13 +53,13 @@
 					</div>
 
 				<div class="wrap-input100 validate-input" data-validate = "Please enter password">
-						<input class="input100" type="text" name="password" placeholder="Password">
+						<input class="input100" type="password" name="password" placeholder="Password">
 						<span class="focus-input100"></span>
 					</div>
 
 					
 				<div class="wrap-input100 validate-input" data-validate = "Please enter password again">
-						<input class="input100" type="text" name="password" placeholder="Password again">
+						<input class="input100" type="password" name="password" placeholder="Password again">
 						<span class="focus-input100"></span>
 					</div>
 					
