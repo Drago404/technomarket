@@ -49,29 +49,39 @@ public class ItemDAO {
 
 	}
 	
-	
+	//admin
 	public void addItem(Item i) {
+		PreparedStatement stmt = null;
+		ResultSet rs = null;
 		try {
 			int categoryId = CategoryDAO.getInstance().getAllCategories().get(i.getCategoryId());
-			PreparedStatement stmt = conn.prepareStatement(ADD_PRODUCT);
+			stmt = conn.prepareStatement(ADD_PRODUCT);
 			stmt.setString(1, i.getName());
 			stmt.setFloat(2, i.getPrice());
 			stmt.setString(3, i.getDescription());
 			stmt.setInt(4, i.getQuantity());
 			stmt.setString(5, i.getPictureUrl());
 			stmt.setLong(6, categoryId);
-			
-			synchronized(this){
+
+			rs = stmt.getGeneratedKeys();
+			rs.next();
+			long primaryKey = rs.getLong(1);
+			i.setId(primaryKey);
+			allItems.put(primaryKey, i);
+			synchronized (this) {
 				stmt.execute();
 			}
-			
 		} catch (SQLException e) {
 			e.printStackTrace();
+		} finally {
+			try {
+				stmt.close();
+				rs.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+
 		}
-		
-		
-		
-		
 	}
 
 }
